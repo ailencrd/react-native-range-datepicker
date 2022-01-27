@@ -116,9 +116,17 @@ export default class Month extends React.Component {
 	render() {
 		const { month, dayProps } = this.props;
 		const dayStack = this.getDayStack(moment(month, 'YYYYMM'));
+
+		const capitalizeString = () => {
+			return moment(month, 'YYYYMM')
+			.format('MMMM YYYY')
+			.split(' ')
+			.map((w) => w[0].toUpperCase() + w.slice(1)).join(' ');
+		  };		
+
 		return (
 			<View>
-				<Text style={{fontSize: 14, padding: 14}}>{moment(month, 'YYYYMM').format("MMMM YYYY")}</Text>
+				<Text style={{fontSize: 14, padding: 14}}>{capitalizeString()}</Text>
 				<View>
 					{
 						dayStack.map((days, i) => {

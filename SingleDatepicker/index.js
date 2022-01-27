@@ -11,6 +11,7 @@ import {
 import Month from './Month';
 // import styles from './styles';
 import moment from 'moment';
+moment.locale('es');
 
 export default class RangeDatepicker extends Component {
 	constructor(props) {
@@ -37,8 +38,14 @@ export default class RangeDatepicker extends Component {
 		minDate: '',
 		maxDate: '',
 		infoText: '',
-		infoStyle: {color: '#fff', fontSize: 13},
-		infoContainerStyle: {marginRight: 20, paddingHorizontal: 20, paddingVertical: 5, backgroundColor: 'green', borderRadius: 20, alignSelf: 'flex-end'},
+		infoStyle: {color: '#fff', fontSize: 10},
+		infoContainerStyle: {
+			marginRight: 20, 
+			paddingHorizontal: 20, 
+			paddingVertical: 5,   
+			elevation: 1,
+			borderRadius: 4,
+			backgroundColor: '#00aeef', alignSelf: 'flex-end'},
 	};
 
 
@@ -113,7 +120,7 @@ export default class RangeDatepicker extends Component {
 						this.props.showClose ?
 							(<View style={{ flexDirection: 'row', justifyContent: "space-between", padding: 20, paddingBottom: 10}}>
 								{
-									this.props.showClose && <Text style={{fontSize: 20}} onPress={this.props.onClose}>Close</Text>
+									this.props.showClose && <Text style={{fontSize: 20}} onPress={this.props.onClose}>Cerrar</Text>
 								}
 							</View>)
 							:

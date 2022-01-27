@@ -24,24 +24,24 @@ export default class Day extends React.Component {
 
 	render() {
 		let {day, dayProps} = this.props;
-		let dayStyle = {backgroundColor : 'transparent', position: 'relative', width: "14.28%"};
+		let dayStyle = {backgroundColor : 'transparent', position: 'relative', width: "auto"};
 		let textDayStyle = {color: 'black'};
 
 		switch(day.type){
 			case "single" : 
-				dayStyle = {backgroundColor : dayProps.selectedBackgroundColor, borderRadius: Math.floor(DEVICE_WIDTH / 7), width: "14.28%" }
+				dayStyle = {backgroundColor : dayProps.selectedBackgroundColor, borderRadius: Math.floor(DEVICE_WIDTH / 7), width: "auto" }
 				textDayStyle = {color: dayProps.selectedTextColor};
 				break;
 			case "first" :
-				dayStyle = {backgroundColor : dayProps.selectedBackgroundColor, borderBottomLeftRadius: Math.floor(DEVICE_WIDTH / 7), borderTopLeftRadius: Math.floor(DEVICE_WIDTH / 7), width: "14.28%" }
+				dayStyle = {backgroundColor : dayProps.selectedBackgroundColor, borderBottomLeftRadius: Math.floor(DEVICE_WIDTH / 7), borderTopLeftRadius: Math.floor(DEVICE_WIDTH / 7), width: "auto" }
 				textDayStyle = {color: dayProps.selectedTextColor};
 				break;
 			case "last" :
-				dayStyle = {backgroundColor : dayProps.selectedBackgroundColor, borderBottomRightRadius: Math.floor(DEVICE_WIDTH / 7), borderTopRightRadius: Math.floor(DEVICE_WIDTH / 7), width: "14.28%" }
+				dayStyle = {backgroundColor : dayProps.selectedBackgroundColor, borderBottomRightRadius: Math.floor(DEVICE_WIDTH / 7), borderTopRightRadius: Math.floor(DEVICE_WIDTH / 7), width: "auto" }
 				textDayStyle = {color: dayProps.selectedTextColor};
 				break;
 			case "between" :
-				dayStyle = {backgroundColor : dayProps.selectedBackgroundColor, width: "14.28%"}
+				dayStyle = {backgroundColor : dayProps.selectedBackgroundColor, width: "auto"}
 				textDayStyle = {color: dayProps.selectedTextColor};
 				break;
 			case "disabled" :

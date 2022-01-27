@@ -7,10 +7,11 @@ import {
   FlatList,
   StyleSheet,
   Button,
+  TouchableOpacity,
 } from 'react-native';
 import Month from './Month';
-// import styles from './styles';
 import moment from 'moment';
+moment.locale('es');
 
 export default class RangeDatepicker extends Component {
 	constructor(props) {
@@ -50,9 +51,15 @@ export default class RangeDatepicker extends Component {
 		minDate: '',
 		maxDate: '',
 		infoText: '',
-		infoStyle: {color: '#fff', fontSize: 13},
-		infoContainerStyle: {marginRight: 20, paddingHorizontal: 20, paddingVertical: 5, backgroundColor: 'green', borderRadius: 20, alignSelf: 'flex-end'},
-		showSelectionInfo: true,
+		infoStyle: {color: '#fff', fontSize: 10},
+		infoContainerStyle: {
+			marginRight: 20, 
+			paddingHorizontal: 20, 
+			paddingVertical: 5,   
+			elevation: 1,
+			borderRadius: 4,
+			backgroundColor: '#00aeef', alignSelf: 'flex-end'},
+			showSelectionInfo: true,
 		showButton: true,
 	};
 
@@ -203,15 +210,15 @@ export default class RangeDatepicker extends Component {
 
 	render(){
 			return (
-				<View style={{backgroundColor: '#fff', zIndex: 1000, alignSelf: 'center', width: '100%', flex: 1}}>
+				<View style={{backgroundColor: '#ffffff', zIndex: 1000, alignSelf: 'center', width: '100%', flex: 1}}>
 					{
 						this.props.showClose || this.props.showReset ?
 							(<View style={{ flexDirection: 'row', justifyContent: "space-between", padding: 20, paddingBottom: 10}}>
 								{
-									this.props.showClose && <Text style={{fontSize: 20}} onPress={this.props.onClose}>Close</Text>
+									this.props.showReset && <Text style={{fontSize: 16}} onPress={this.onReset}>Reestablecer</Text>
 								}
 								{
-									this.props.showReset && <Text style={{fontSize: 20}} onPress={this.onReset}>Reset</Text>
+									this.props.showClose && <Text style={{fontSize: 16}} onPress={this.props.onClose}>Cerrar</Text>
 								}
 							</View>)
 							:
@@ -251,7 +258,7 @@ export default class RangeDatepicker extends Component {
 					<View style={styles.dayHeader}>
 						{
 							this.props.dayHeadings.map((day, i) => {
-								return (<Text style={{width: "14.28%", textAlign: 'center'}} key={i}>{day}</Text>)
+								return (<Text style={{width: "14%", textAlign: 'center', fontSize: 10}} key={i}>{day}</Text>)
 							})
 						}
 					</View>
@@ -269,10 +276,18 @@ export default class RangeDatepicker extends Component {
 						this.props.showButton ? 
 						(
 						<View style={[styles.buttonWrapper, this.props.buttonContainerStyle]}>
-							<Button
-								title="Select Date" 
+							<TouchableOpacity
+								activeOpacity={0.8}
 								onPress={this.handleConfirmDate}
-								color={this.props.buttonColor} />
+								style={styles.buttonStyle}
+								>
+							<Text style={styles.buttonText}>Seleccionar</Text>
+							</TouchableOpacity>
+							{/* <Button
+								title="Seleccionar" 
+								onPress={this.handleConfirmDate}
+								style={styles.buttonStyle}
+								color={this.props.buttonColor} /> */}
 						</View>
 						) : null
 					}	
@@ -284,16 +299,28 @@ export default class RangeDatepicker extends Component {
 const styles = StyleSheet.create({
 	dayHeader : {
 		flexDirection: 'row',
-		borderBottomWidth: 1,
-		paddingBottom: 10,
-		paddingTop: 10,
+		paddingVertical: 10,
+		paddingHorizontal: 10,
+		borderRadius: 4,
+		backgroundColor: '#b1b1b1'
 	},
 	buttonWrapper : {
-		paddingVertical: 10,
+		paddingVertical: 20,
 		paddingHorizontal: 15,
-		backgroundColor: 'white',
-		borderTopWidth: 1,
-		borderColor: '#ccc',
-		alignItems: 'stretch'
+		backgroundColor: '#ffffff',
+		alignItems: 'flex-end'
 	},
+	buttonStyle: {
+		elevation: 1,
+		borderRadius: 4,
+		backgroundColor: '#ffffff',
+		borderWidth: 1,
+		borderColor: '#0097d0',	
+		padding: 6,	
+	},
+	buttonText: {
+		textAlign: 'center',
+		fontWeight: '500',
+		color: '#0097d0',	  
+	}
 });
